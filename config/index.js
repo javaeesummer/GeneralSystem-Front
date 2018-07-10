@@ -23,7 +23,7 @@ module.exports = {
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
-    useEslint: true,
+    useEslint: false,
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,
@@ -53,7 +53,12 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    /*
+      path.resolve([from ...], to)
+      将参数 to 位置的字符解析到一个绝对路径里。
+    */
+    assetsRoot: path.resolve(__dirname, '../dist'), 
+  
     assetsSubDirectory: 'static',
     // 请根据你的站点地址修改这里
     assetsPublicPath: '/d2-admin-preview/',

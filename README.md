@@ -4,6 +4,12 @@
 -   [项目目录](#项目目录)
 -   [项目预览](#项目预览)
 -   [代码规范](#代码规范)
+-   [参考文章](#参考文章)
+
+## 推荐依赖
+-   CSS：scss
+-   http请求: axios
+-   组件 :[element](http://element-cn.eleme.io/#/zh-CN/component/quickstart),[iView](https://www.iviewui.com/docs/guide/install)
 
 ##  项目目录
 <div id="项目目录"></div>
@@ -20,10 +26,11 @@
 │  │  ├─ image
 │  │  ├─ library
 │  │  └─ style
-│  ├─ components // 组件
-│  │  ├─ charts // 图表组件
+│  ├─ components // 注册的组件
 │  │  ├─ core // 核心组件
+│  │  │  └─ register.js //全局注册组件
 │  │  └─ demo // 示例组件
+│  │     └─ register.js //全局注册组件 
 │  ├─ i18n // 多国语
 │  ├─ libs // 通用库
 │  ├─ menu // 菜单
@@ -55,3 +62,11 @@
 
 ##  代码规范
 <div id="代码规范"></div>
+- 变量函数一律采用小驼峰命名法
+- 命名前推荐先参考相同类型的命名
+
+## 参考文章
+<div id="参考文章"></div>
+
+### svg
+-   [手摸手，带你优雅的使用 icon](#https://juejin.im/post/59bb864b5188257e7a427c09)

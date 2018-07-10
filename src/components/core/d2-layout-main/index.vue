@@ -19,9 +19,9 @@
         <d2-layout-main-menu-header/>
         <!-- 顶栏右侧 -->
         <div class="d2-header-right">
-          <d2-layout-main-header-github/>
-          <d2-layout-main-header-help/>
-          <d2-layout-main-header-full-screen/>
+          <!-- <d2-layout-main-header-github/> -->
+          <!-- <d2-layout-main-header-help/> -->
+          <!-- <d2-layout-main-header-full-screen/> -->
           <d2-layout-main-header-theme/>
           <d2-layout-main-header-user/>
         </div>
@@ -70,9 +70,9 @@ export default {
     return {
       collapse: false,
       // [侧边栏宽度] 正常状态
-      asideWidth: '200px',
+      asideWidth: '180px',
       // [侧边栏宽度] 折叠状态
-      asideWidthCollapse: '65px'
+      asideWidthCollapse: '30px'
     }
   },
   computed: {

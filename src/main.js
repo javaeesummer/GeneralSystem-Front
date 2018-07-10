@@ -22,7 +22,8 @@ import { frameInRoutes } from '@/router/routes'
 // ElementUI
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
+//iView
+import iView from 'iview';
 // v-charts
 import VCharts from 'v-charts'
 

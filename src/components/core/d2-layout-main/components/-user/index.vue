@@ -1,6 +1,7 @@
 <template>
   <el-dropdown class="d2-mr">
-    <span class="btn-text">你好 {{username}}</span>
+    <!-- <span class="btn-text">你好 {{username}}</span> -->
+    <Avatar icon="person" />
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item @click.native="logOff"><d2-icon name="power-off"/> 注销</el-dropdown-item>
       <el-dropdown-item><d2-icon name="user-circle-o"/> 个人中心</el-dropdown-item>
