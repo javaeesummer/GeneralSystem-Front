@@ -5,8 +5,10 @@
 -   [项目预览](#项目预览)
 -   [代码规范](#代码规范)
 -   [参考文章](#参考文章)
-
+-   [推荐依赖](#推荐依赖)
 ## 推荐依赖
+<div id="推荐依赖"></div>
+
 -   CSS：scss
 -   http请求: axios
 -   组件 :[element](http://element-cn.eleme.io/#/zh-CN/component/quickstart),[iView](https://www.iviewui.com/docs/guide/install)
@@ -62,6 +64,7 @@
 
 ##  代码规范
 <div id="代码规范"></div>
+
 - 变量函数一律采用小驼峰命名法
 - 命名前推荐先参考相同类型的命名
 
@@ -69,4 +72,4 @@
 <div id="参考文章"></div>
 
 ### svg
--   [手摸手，带你优雅的使用 icon](#https://juejin.im/post/59bb864b5188257e7a427c09)
+-   [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
