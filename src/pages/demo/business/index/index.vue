@@ -5,5 +5,12 @@
       sub-title="暂时还没有什么 但是以后会有">
       <img :src="`${$assetsPublicPath}static/image/icon/500/business.png`">
     </d2-demo-page-cover>
+    
   </d2-container>
 </template>
+
+<script>
+export default {
+  
+}
+</script>

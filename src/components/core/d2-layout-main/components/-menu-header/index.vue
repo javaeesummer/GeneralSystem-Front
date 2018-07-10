@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import menus from '@/menu/index.js'
+import {adminMenu,userMenu} from '@/menu/index.js'
 import menuMixin from '../mixin/menu'
 // 组件
 import d2LayoutMainMenuItem from '../-menu-item/index.vue'
@@ -25,7 +25,7 @@ export default {
   },
   data () {
     return {
-      menus
+      menus:userMenu
     }
   }
 }

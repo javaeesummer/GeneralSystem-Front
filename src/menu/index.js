@@ -1,4 +1,5 @@
-// 路由菜单 插件
+// 路由菜单 
+//  插件
 const demoPlugins = {
   path: '/demo/plugins',
   title: '插件',
@@ -436,8 +437,7 @@ export const side = [
   setting
 ]
 
-// 菜单 顶栏
-export default [
+export const adminMenu = [
   {
     path: '/index',
     title: '首页',
@@ -477,3 +477,85 @@ export default [
   },
   setting
 ]
+
+export const userMenu=[
+  {
+    path: '/index',
+    title: '首页',
+    icon: 'home'
+  },
+  {
+    path: '/demo',
+    title: '功能',
+    icon: 'puzzle-piece',
+    children: [
+      demoElement,
+      demoComponents,
+      demoCharts,
+      demoPlugins,
+      demoPlayground,
+      {
+        title: '空菜单演示',
+        icon: 'folder-o',
+        children: [
+          {
+            title: '正在开发 1',
+            children: [
+              { title: '正在开发 1-1' },
+              { title: '正在开发 1-2' }
+            ]
+          },
+          { title: '正在开发 2' },
+          { title: '正在开发 3' }
+        ]
+      }
+    ]
+  },
+  
+]
+
+export default[
+  ...adminMenu,
+  ...userMenu
+]
+// 菜单 顶栏
+// export default [
+//   {
+//     path: '/index',
+//     title: '首页',
+//     icon: 'home'
+//   },
+//   {
+//     path: '/demo',
+//     title: '功能',
+//     icon: 'puzzle-piece',
+//     children: [
+//       demoElement,
+//       demoComponents,
+//       demoCharts,
+//       demoPlugins,
+//       demoPlayground,
+//       {
+//         title: '空菜单演示',
+//         icon: 'folder-o',
+//         children: [
+//           {
+//             title: '正在开发 1',
+//             children: [
+//               { title: '正在开发 1-1' },
+//               { title: '正在开发 1-2' }
+//             ]
+//           },
+//           { title: '正在开发 2' },
+//           { title: '正在开发 3' }
+//         ]
+//       }
+//     ]
+//   },
+//   {
+//     path: '/demo/business',
+//     title: '示例',
+//     icon: 'briefcase'
+//   },
+//   setting
+// ]

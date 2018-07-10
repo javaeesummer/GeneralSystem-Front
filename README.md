@@ -4,13 +4,15 @@
 -   [推荐依赖](#推荐依赖)
 -   [项目目录](#项目目录)
 -   [项目预览](#项目预览)
--   [代码规范](#代码规范)
+-   [注意事项](#注意事项)
 -   [参考文章](#参考文章)
 
 ## 推荐依赖
 <div id="推荐依赖"></div>
 
--   CSS：scss
+-   页面路由:[vue-router](https://router.vuejs.org/zh/)
+-   状态仓库:[vuex](https://vuex.vuejs.org/zh/guide/)
+-   CSS：[scss](https://www.sass.hk/docs/)
 -   http请求: axios
 -   组件 :[element](http://element-cn.eleme.io/#/zh-CN/component/quickstart),[iView](https://www.iviewui.com/docs/guide/install)
 
@@ -36,7 +38,7 @@
 │  │     └─ register.js //全局注册组件 
 │  ├─ i18n // 多国语
 │  ├─ libs // 通用库
-│  ├─ menu // 菜单
+│  ├─ menu // 头部菜单配置文件
 │  ├─ mock // 模拟数据
 │  ├─ pages // 页面
 │  ├─ plugin // 插件
@@ -62,10 +64,14 @@
 <div id="项目预览"></div>
 
 
+##  注意事项
+<div id="注意事项"></div>
 
-##  代码规范
-<div id="代码规范"></div>
+### 开发流程
+-   本地请自己开个基于dev的分支，完成后merge到本地的dev分支，再push到远程仓库
 
+
+###  代码规范
 - 变量函数一律采用小驼峰命名法
 - 命名前推荐先参考相同类型的命名
 
@@ -74,3 +80,4 @@
 
 ### svg
 -   [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
+-   [vue mixins](https://segmentfault.com/a/1190000009875015)
