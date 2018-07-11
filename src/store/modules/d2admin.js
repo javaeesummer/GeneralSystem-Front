@@ -10,6 +10,8 @@ export default {
   state: {
     // 用户名
     username: '',
+    //用户类型
+    usertype: '',
     // 拉取的最新版本信息
     releases: {},
     // D2Admin 版本
@@ -46,7 +48,7 @@ export default {
      * @description 返回当前的主题信息 不是一个名字 而是所有的主题数据
      * @param {state} state vuex state
      */
-    themeActiveSetting (state) {
+    themeActiveSetting(state) {
       return state.themeList.find(theme => theme.name === state.themeActiveName)
     }
   },
@@ -57,10 +59,10 @@ export default {
      * @param {state} state vuex state
      * @param {string} key key name
      */
-    d2adminVuex2DbByUuid (state, key) {
-      const row = db.get(key).find({uuid: util.uuid()})
+    d2adminVuex2DbByUuid(state, key) {
+      const row = db.get(key).find({ uuid: util.uuid() })
       if (row.value()) {
-        row.assign({value: state[key]}).write()
+        row.assign({ value: state[key] }).write()
       } else {
         db.get(key).push({
           uuid: util.uuid(),
@@ -74,8 +76,8 @@ export default {
      * @param {state} state vuex state
      * @param {object} param1 key and default value
      */
-    d2adminDb2VuexByUuid (state, { key, defaultValue }) {
-      const row = db.get(key).find({uuid: util.uuid()}).value()
+    d2adminDb2VuexByUuid(state, { key, defaultValue }) {
+      const row = db.get(key).find({ uuid: util.uuid() }).value()
       state[key] = row ? row.value : defaultValue
     },
     /**
@@ -84,8 +86,8 @@ export default {
      * @param {state} state vuex state
      * @param {object} param1 key & empty value
      */
-    d2adminDbRemoveByUuid (state, { key, emptyValue }) {
-      db.get(key).remove({uuid: util.uuid()}).write()
+    d2adminDbRemoveByUuid(state, { key, emptyValue }) {
+      db.get(key).remove({ uuid: util.uuid() }).write()
       state[key] = emptyValue
     },
     /**
@@ -94,10 +96,10 @@ export default {
      * @param {state} state vuex state
      * @param {string} key key name
      */
-    d2adminVuex2Db (state, key) {
-      const row = db.get(key).find({pub: 'pub'})
+    d2adminVuex2Db(state, key) {
+      const row = db.get(key).find({ pub: 'pub' })
       if (row.value()) {
-        row.assign({value: state[key]}).write()
+        row.assign({ value: state[key] }).write()
       } else {
         db.get(key).push({
           pub: 'pub',
@@ -111,8 +113,8 @@ export default {
      * @param {state} state vuex state
      * @param {object} param1 key and default value
      */
-    d2adminDb2Vuex (state, { key, defaultValue }) {
-      const row = db.get(key).find({pub: 'pub'}).value()
+    d2adminDb2Vuex(state, { key, defaultValue }) {
+      const row = db.get(key).find({ pub: 'pub' }).value()
       state[key] = row ? row.value : defaultValue
     },
     /**
@@ -121,8 +123,8 @@ export default {
      * @param {state} state vuex state
      * @param {object} param1 key & empty value
      */
-    d2adminDbRemove (state, { key, emptyValue }) {
-      db.get(key).remove({pub: 'pub'}).write()
+    d2adminDbRemove(state, { key, emptyValue }) {
+      db.get(key).remove({ pub: 'pub' }).write()
       state[key] = emptyValue
     },
     /**
@@ -131,16 +133,21 @@ export default {
      * @param {state} state vuex state
      * @param {string} username username
      */
-    d2adminUsernameSet (state, username) {
+    d2adminUsernameSet(state, username) {
       state.username = username
       this.commit('d2adminVuex2DbByUuid', 'username')
+    },
+
+    d2adminUsertypeSet(state, usertype) {
+      state.usertype = usertype
+      this.commit('d2adminVuex2DbByUuid', 'usertype')
     },
     /**
      * @description 从数据库取用户名
      * @class username
      * @param {state} state vuex state
      */
-    d2adminUsernameLoad (state) {
+    d2adminUsernameLoad(state) {
       this.commit('d2adminDb2VuexByUuid', {
         key: 'username',
         defaultValue: ''
@@ -152,7 +159,7 @@ export default {
      * @param {state} state vuex state
      * @param {object} releases info
      */
-    d2adminReleasesSet (state, releases) {
+    d2adminReleasesSet(state, releases) {
       state.releases = releases
     },
     /**
@@ -161,7 +168,7 @@ export default {
      * @param {state} state vuex state
      * @param {boolean} update update value
      */
-    d2adminUpdateSet (state, update) {
+    d2adminUpdateSet(state, update) {
       state.update = update
     },
     /**
@@ -170,7 +177,7 @@ export default {
      * @param {state} state vuex state
      * @param {boolean} update updateNotify value
      */
-    d2adminUpdateNotifySet (state, updateNotify) {
+    d2adminUpdateNotifySet(state, updateNotify) {
       state.updateNotify = updateNotify
       this.commit('d2adminVuex2Db', 'updateNotify')
     },
@@ -180,7 +187,7 @@ export default {
      * @param {state} state vuex state
      * @param {boolean} update updateNotify value
      */
-    d2adminUpdateNotifyLoad (state, updateNotify) {
+    d2adminUpdateNotifyLoad(state, updateNotify) {
       this.commit('d2adminDb2Vuex', {
         key: 'updateNotify',
         defaultValue: true
@@ -192,7 +199,7 @@ export default {
      * @param {state} state vuex state
      * @param {string} name new name
      */
-    d2adminPageCurrentSet (state, name) {
+    d2adminPageCurrentSet(state, name) {
       state.pageCurrent = name
     },
     /**
@@ -201,7 +208,7 @@ export default {
      * @param {state} state vuex state
      * @param {Array} tagPool tags
      */
-    d2adminTagPoolSet (state, tagPool) {
+    d2adminTagPoolSet(state, tagPool) {
       state.tagPool = tagPool
     },
     /**
@@ -210,7 +217,7 @@ export default {
      * @param {state} state vuex state
      * @param {info} param1 new page info
      */
-    d2adminPageOpenedListUpdateItem (state, { index, argu, query }) {
+    d2adminPageOpenedListUpdateItem(state, { index, argu, query }) {
       // 更新页面列表某一项
       let page = state.pageOpenedList[index]
       page.argu = argu || page.argu
@@ -224,7 +231,7 @@ export default {
      * @description 从数据库载入分页列表
      * @param {state} state vuex state
      */
-    d2adminPageOpenedListLoad (state) {
+    d2adminPageOpenedListLoad(state) {
       this.commit('d2adminDb2VuexByUuid', {
         key: 'pageOpenedList',
         defaultValue: state.pageOpenedList
@@ -236,7 +243,7 @@ export default {
      * @param {state} state vuex state
      * @param {object} param1 new tag info
      */
-    d2adminTagIncreate (state, { tag, argu, query }) {
+    d2adminTagIncreate(state, { tag, argu, query }) {
       // 设置新的 tag 在新打开一个以前没打开过的页面时使用
       let newPage = tag
       newPage.argu = argu || newPage.argu
@@ -253,7 +260,7 @@ export default {
      * @param {state} state vuex state
      * @param {string} name close tag name
      */
-    d2adminTagClose (state, name) {
+    d2adminTagClose(state, name) {
       // 找到这个页面在已经打开的数据里是第几个
       const index = state.pageOpenedList.findIndex(page => page.name === name)
       if (index >= 0) {
@@ -267,7 +274,7 @@ export default {
      * @description 关闭当前标签左边的标签
      * @param {state} state vuex state
      */
-    d2adminTagCloseLeft (state) {
+    d2adminTagCloseLeft(state) {
       let currentIndex = 0
       state.pageOpenedList.forEach((page, index) => {
         if (page.name === state.pageCurrent) {
@@ -285,7 +292,7 @@ export default {
      * @description 关闭当前标签右边的标签
      * @param {state} state vuex state
      */
-    d2adminTagCloseRight (state) {
+    d2adminTagCloseRight(state) {
       let currentIndex = 0
       state.pageOpenedList.forEach((page, index) => {
         if (page.name === state.pageCurrent) {
@@ -301,7 +308,7 @@ export default {
      * @description 关闭当前激活之外的 tag
      * @param {state} state vuex state
      */
-    d2adminTagCloseOther (state) {
+    d2adminTagCloseOther(state) {
       let currentIndex = 0
       state.pageOpenedList.forEach((page, index) => {
         if (page.name === state.pageCurrent) {
@@ -322,7 +329,7 @@ export default {
      * @description 关闭所有 tag
      * @param {state} state vuex state
      */
-    d2adminTagCloseAll (state) {
+    d2adminTagCloseAll(state) {
       state.pageOpenedList.splice(1)
       // 更新设置到数据库
       this.commit('d2adminVuex2DbByUuid', 'pageOpenedList')
@@ -332,7 +339,7 @@ export default {
      * @description 切换全屏
      * @param {state} state vuex state
      */
-    d2adminFullScreenToggle () {
+    d2adminFullScreenToggle() {
       if (screenfull.isFullscreen) {
         screenfull.exit()
         this.commit('d2adminFullScreenSet', false)
@@ -346,7 +353,7 @@ export default {
      * @description 设置 store 里的全屏状态
      * @param {state} state vuex state
      */
-    d2adminFullScreenSet (state, isFullScreen) {
+    d2adminFullScreenSet(state, isFullScreen) {
       state.isFullScreen = isFullScreen
     },
     /**
@@ -354,7 +361,7 @@ export default {
      * @description 切换灰度状态
      * @param {state} state vuex state
      */
-    d2adminGrayModeToggle (state) {
+    d2adminGrayModeToggle(state) {
       state.isGrayMode = !state.isGrayMode
     },
     /**
@@ -363,7 +370,7 @@ export default {
      * @param {state} state vuex state
      * @param {boolean} value new value
      */
-    d2adminGrayModeSet (state, value) {
+    d2adminGrayModeSet(state, value) {
       state.isGrayMode = value
     },
     /**
@@ -372,7 +379,7 @@ export default {
      * @param {state} state vuex state
      * @param {string} themeValue 需要激活的主题名称
      */
-    d2adminThemeSet (state, themeName) {
+    d2adminThemeSet(state, themeName) {
       // 检查这个主题在主题列表里是否存在
       const theme = state.themeList.find(e => e.name === themeName)
       if (theme) {
@@ -392,7 +399,7 @@ export default {
      * @description 将 vuex 中的主题应用到 dom
      * @param {state} state vuex state
      */
-    d2adminTheme2dom (state) {
+    d2adminTheme2dom(state) {
       document.body.className = `theme-${state.themeActiveName}`
     },
     /**
@@ -400,7 +407,7 @@ export default {
      * @description 从数据库加载主题设置
      * @param {state} state vuex state
      */
-    d2adminThemeLoad (state) {
+    d2adminThemeLoad(state) {
       this.commit('d2adminDb2VuexByUuid', {
         key: 'themeActiveName',
         defaultValue: state.themeList[0].name

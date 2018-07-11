@@ -16,13 +16,13 @@
         <div class="toggle-aside-btn" @click="collapse = !collapse">
           <d2-icon name="bars"/>
         </div>
-        <d2-layout-main-menu-header/>
+        <d2-layout-main-menu-header :usertype="usertype"/>
         <!-- 顶栏右侧 -->
         <div class="d2-header-right">
           <!-- <d2-layout-main-header-github/> -->
-          <!-- <d2-layout-main-header-help/> -->
+          <d2-layout-main-header-help/>
           <!-- <d2-layout-main-header-full-screen/> -->
-          <d2-layout-main-header-theme/>
+          <!-- <d2-layout-main-header-theme/> -->
           <d2-layout-main-header-user/>
         </div>
       </div>
@@ -77,6 +77,7 @@ export default {
   },
   computed: {
     ...mapState({
+      usertype: state=>state.d2admin.usertype,
       isGrayMode: state => state.d2admin.isGrayMode
     }),
     ...mapGetters([

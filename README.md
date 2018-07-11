@@ -15,7 +15,8 @@
 -   CSS：[scss](https://www.sass.hk/docs/)
 -   http请求: axios
 -   组件 :[element](http://element-cn.eleme.io/#/zh-CN/component/quickstart),[iView](https://www.iviewui.com/docs/guide/install)
-
+-   particlesJS:一个轻量级的创建粒子背景的 JavaScript 库
+-   本地数据存储:[LowDB](LowDB——轻量级本地JSON数据库) (在vuex中用到)
 ##  项目目录
 <div id="项目目录"></div>
 
@@ -67,6 +68,7 @@
 ##  注意事项
 <div id="注意事项"></div>
 
+
 ### 开发流程
 -   本地请自己开个基于master的分支，完成后merge到本地的master分支，再push到远程仓库
 
@@ -81,3 +83,6 @@
 ### svg
 -   [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
 -   [vue mixins](https://segmentfault.com/a/1190000009875015)
+
+## 开发时遇到的问题
+-   常见开发问题

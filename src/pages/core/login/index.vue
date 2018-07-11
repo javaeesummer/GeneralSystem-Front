@@ -10,7 +10,7 @@
       <div class="form-group">
         <el-card>
           <el-form ref="loginForm" label-position="top" :rules="rules" :model="formLogin">
-            <el-form-item  prop="username">
+            <el-form-item prop="username">
               <el-input type="text" v-model="formLogin.username" placeholder="用户名">
                 <i slot="prepend" class="fa fa-user-circle-o"></i>
               </el-input>
@@ -43,84 +43,84 @@
 
 <script>
 /* eslint-disable */
-require('particles.js')
+require("particles.js");
 // 配置地址
 // https://vincentgarreau.com/particles.js/#default
-import config from './config/default'
-import Cookies from 'js-cookie'
-import { mapMutations } from 'vuex'
+import config from "./config/default";
+import Cookies from "js-cookie";
+import { mapMutations } from "vuex";
 
 export default {
-  data () {
-    return {
-      formLogin: {
-        username: 'admin',
-        password: 'admin',
-        code: 'v9am'
-      },
-      rules: {
-        username: [
-          { required: true, message: '请输入用户名', trigger: 'blur' }
-        ],
-        password: [
-          { required: true, message: '请输入密码', trigger: 'blur' }
-        ],
-        code: [
-          { required: true, message: '请输入验证码', trigger: 'blur' }
-        ]
-      }
-    }
-  },
-  mounted () {
-    // 初始化例子插件
-    particlesJS('login', config)
-  },
-  methods: {
-    ...mapMutations([
-      'd2adminUsernameSet'
-    ]),
-    // 提交登陆信息
-    submit () {
-      this.$refs.loginForm.validate((valid) => {
-        if (valid) {
-          // 开始请求登录接口
-          this.$axios({
-            method: 'post',
-            url: '/login',
-            data: {
-              username: this.formLogin.username,
-              password: this.formLogin.password
+    data() {
+        return {
+            formLogin: {
+                username: "admin",
+                password: "admin",
+                code: "v9am"
+            },
+            rules: {
+                username: [
+                    { required: true, message: "请输入用户名", trigger: "blur" }
+                ],
+                password: [
+                    { required: true, message: "请输入密码", trigger: "blur" }
+                ],
+                code: [
+                    { required: true, message: "请输入验证码", trigger: "blur" }
+                ]
             }
-          })
-            .then(res => {
-              this.$log('登录结果', res)
-              // cookie 一天的有效期
-              const setting = {
-                expires: 1
-              }
-              // 设置 cookie 一定要存 uuid 和 token 两个 cookie，整个系统依赖这两个数据进行校验和存储
-              Cookies.set('uuid', res.uuid, setting)
-              Cookies.set('token', res.token, setting)
-              // 设置 vuex
-              this.d2adminUsernameSet(res.name)
-              // 跳转路由
-              this.$router.push({
-                name: 'index'
-              })
-            })
-            .catch(err => {
-              this.$log('错误信息', err)
-            })
-        } else {
-          return false
+        };
+    },
+    mounted() {
+        // 初始化例子插件
+        particlesJS("login", config);
+    },
+    methods: {
+        ...mapMutations(["d2adminUsernameSet", "d2adminUsertypeSet"]),
+        // 提交登陆信息
+        submit() {
+            this.$refs.loginForm.validate(valid => {
+                if (valid) {
+                    // 开始请求登录接口
+                    this.$axios({
+                        method: "post",
+                        url: "/login",
+                        data: {
+                            username: this.formLogin.username,
+                            password: this.formLogin.password
+                        }
+                    })
+                        .then(res => {
+                            this.$log("登录结果", res);
+                            // cookie 一天的有效期
+                            const setting = {
+                                expires: 1
+                            };
+                            // 设置 cookie 一定要存 uuid 和 token 两个 cookie，整个系统依赖这两个数据进行校验和存储
+                            Cookies.set("uuid", res.uuid, setting);
+                            Cookies.set("token", res.token, setting);
+                            // 设置 vuex
+                            this.d2adminUsernameSet(res.name);
+
+                            this.d2adminUsertypeSet("主办方");
+                            // 跳转路由
+                            this.$router.push({
+                                name: "index"
+                            });
+                        })
+                        .catch(err => {
+                            this.$log("错误信息", err);
+                        });
+                } else {
+                    return false;
+                }
+            });
         }
-      })
     }
-  }
-}
+};
 </script>
 
 <style lang="scss">
-@import './style.scss';
+@import "./style.scss";
 </style>
 

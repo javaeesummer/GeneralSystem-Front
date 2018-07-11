@@ -24,6 +24,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 //iView
 import iView from 'iview';
+import 'iview/dist/styles/iview.css';
 // v-charts
 import VCharts from 'v-charts'
 
@@ -74,6 +75,7 @@ import vueJsonTreeView from 'vue-json-tree-view'
 // 打包的设置 用户获取路径
 import buildConfig from '../config/index'
 
+Vue.use(iView);
 Vue.use(ElementUI)
 Vue.use(VCharts)
 Vue.use(contentmenu)

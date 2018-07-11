@@ -426,7 +426,28 @@ const setting = {
     { path: `${pre}releases`, title: '版本', icon: 'info-circle' }
   ])('/core/setting/')
 }
+// 单个活动侧边菜单
+const activity = {
+  path: '/activity',
+  title: '活动',
+  icon: 'cog',
+  children: (pre => [
+    { path: `${pre}index`, title: '活动信息', icon: 'home' },
+    { path: `${pre}judge`, title: '评委管理', icon: 'home' },
+    { path: `${pre}work`, title: '作品管理', icon: 'info-circle' }
+  ])('/activities/activity')
 
+}
+//活动管理（activities） 侧边菜单
+const activities = {
+  path: '/activities',
+  title: '活动管理',
+  icon: 'cog',
+  children: (pre => [
+    { path: `${pre}index`, title: '活动管理', icon: 'home' },
+    { path: `${pre}create`, title: '活动创建', icon: 'home' },
+  ])('/activities/')
+}
 // 菜单 侧边栏
 export const side = [
   demoPlugins,
@@ -434,7 +455,22 @@ export const side = [
   demoCharts,
   demoElement,
   demoPlayground,
-  setting
+  setting,
+  activity,
+  activities,
+]
+
+export const sponsorMenu = [
+  {
+    path: '/index',
+    title: '首页',
+    icon: 'home'
+  },
+
+  activities,
+
+
+  // setting
 ]
 
 export const adminMenu = [
@@ -444,6 +480,9 @@ export const adminMenu = [
     icon: 'home'
   },
   {
+
+  },
+  {
     path: '/demo',
     title: '功能',
     icon: 'puzzle-piece',
@@ -470,15 +509,8 @@ export const adminMenu = [
       }
     ]
   },
-  {
-    path: '/demo/business',
-    title: '示例',
-    icon: 'briefcase'
-  },
-  setting
 ]
-
-export const userMenu=[
+export const userMenu = [
   {
     path: '/index',
     title: '首页',
@@ -511,51 +543,12 @@ export const userMenu=[
       }
     ]
   },
-  
+
 ]
 
-export default[
-  ...adminMenu,
-  ...userMenu
+export default [
+  adminMenu,
+  userMenu,
+  sponsorMenu
 ]
-// 菜单 顶栏
-// export default [
-//   {
-//     path: '/index',
-//     title: '首页',
-//     icon: 'home'
-//   },
-//   {
-//     path: '/demo',
-//     title: '功能',
-//     icon: 'puzzle-piece',
-//     children: [
-//       demoElement,
-//       demoComponents,
-//       demoCharts,
-//       demoPlugins,
-//       demoPlayground,
-//       {
-//         title: '空菜单演示',
-//         icon: 'folder-o',
-//         children: [
-//           {
-//             title: '正在开发 1',
-//             children: [
-//               { title: '正在开发 1-1' },
-//               { title: '正在开发 1-2' }
-//             ]
-//           },
-//           { title: '正在开发 2' },
-//           { title: '正在开发 3' }
-//         ]
-//       }
-//     ]
-//   },
-//   {
-//     path: '/demo/business',
-//     title: '示例',
-//     icon: 'briefcase'
-//   },
-//   setting
-// ]
+

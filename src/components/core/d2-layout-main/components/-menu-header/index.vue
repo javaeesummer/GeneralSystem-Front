@@ -1,32 +1,49 @@
 <template>
   <el-menu mode="horizontal" @select="handleMenuSelect">
     <template v-for="(menu, menuIndex) in menus">
-      <d2-layout-main-menu-item v-if="menu.children === undefined" :menu="menu" :key="menuIndex"/>
-      <d2-layout-main-menu-sub v-else :menu="menu" :key="menuIndex"/>
+      <d2-layout-main-menu-item v-if="menu.children === undefined" :menu="menu" :key="menuIndex" />
+      <d2-layout-main-menu-sub v-else :menu="menu" :key="menuIndex" />
     </template>
   </el-menu>
 </template>
 
 <script>
-import {adminMenu,userMenu} from '@/menu/index.js'
-import menuMixin from '../mixin/menu'
+import {userMenu,adminMenu,sponsorMenu} from "@/menu/index.js";
+import menuMixin from "../mixin/menu";
 // 组件
-import d2LayoutMainMenuItem from '../-menu-item/index.vue'
-import d2LayoutMainMenuSub from '../-menu-sub/index.vue'
-
+import d2LayoutMainMenuItem from "../-menu-item/index.vue";
+import d2LayoutMainMenuSub from "../-menu-sub/index.vue";
 export default {
-  name: 'd2-layout-main-menu-header',
-  mixins: [
-    menuMixin
-  ],
-  components: {
-    'd2-layout-main-menu-item': d2LayoutMainMenuItem,
-    'd2-layout-main-menu-sub': d2LayoutMainMenuSub
-  },
-  data () {
-    return {
-      menus:userMenu
+    props: {
+        usertype: {
+            type: String,
+            default: "游客"
+        }
+    },
+    name: "d2-layout-main-menu-header",
+    mixins: [menuMixin],
+    components: {
+        "d2-layout-main-menu-item": d2LayoutMainMenuItem,
+        "d2-layout-main-menu-sub": d2LayoutMainMenuSub
+    },
+   
+    data() {
+        return {
+            menus: this.getMenu()
+        };
+    },
+    methods: {
+        getMenu: function() {
+            var menu = sponsorMenu;
+            if (this.usertype === "主办方") {
+                menu =sponsorMenu;
+            } else if (this.usertype === "用户") {
+                menu = userMenu;
+            } else if (this.usertype === "游客") {
+                menu = userMenu;
+            }          
+            return menu;
+        }
     }
-  }
-}
+};
 </script>

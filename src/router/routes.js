@@ -21,6 +21,27 @@ const frameIn = [
     ]
   },
   {
+    path: '/activities',
+    name: 'activities',
+    meta,
+    redirect: { name: 'activities-index' },
+    component: () => import('@/components/core/d2-layout-main'),
+    children: (pre => [
+      //index activity list
+      { path: 'index', name: `${pre}index`, component: () => import('@/pages/activities/index/index.vue'), meta: { ...meta, title: '活动管理' } },
+      { path: 'create', name: `${pre}create`, component: () => import('@/pages/activities/create/index.vue'), meta: { ...meta, title: "活动创建" } },
+      //activity
+      {
+        path: 'activity/:activityId', name: `activity`,redirect: { name: 'activity-index' }, component: () => import('@/pages/activities/activity/index/index.vue'), meta: { ...meta, title: "活动首页" },
+        children: (pre => [
+          { path: 'index', name: `${pre}index`, component: () => import('@/pages/activities/activity/index/index.vue'), meta: { ...meta, title: "活动创建" } },
+          { path: 'judge', name: `${pre}judge-index`, component: () => import('@/pages/activities/activity/judge/index/index.vue'), meta: { ...meta, title: "评审主页" } },
+          { path: 'work', name: `${pre}work-index`, component: () => import('@/pages/activities/activity/work/index/index.vue'), meta: { ...meta, title: "作品主页" } },
+        ])('activity-')
+      },
+    ])('activities-')
+  },
+  {
     path: '/core/setting',
     name: 'core-setting',
     meta,
