@@ -32,9 +32,9 @@ const frameIn = [
       { path: 'create', name: `${pre}create`, component: () => import('@/pages/activities/create/index.vue'), meta: { ...meta, title: "活动创建" } },
       //activity
       {
-        path: 'activity/:activityId', name: `activity`,redirect: { name: 'activity-index' }, component: () => import('@/pages/activities/activity/index/index.vue'), meta: { ...meta, title: "活动首页" },
+        path: 'activity/activityId=:activityId', name: `activity`,redirect: { name: 'activity-index' }, component: () => import('@/pages/activities/activity/index/index.vue'), meta: { ...meta, title: "活动首页" },
         children: (pre => [
-          { path: 'index', name: `${pre}index`, component: () => import('@/pages/activities/activity/index/index.vue'), meta: { ...meta, title: "活动创建" } },
+          { path: 'index', name: `${pre}index`, component: () => import('@/pages/activities/activity/index/index.vue'), meta: { ...meta, title: "活动主页" } },
           { path: 'judge', name: `${pre}judge-index`, component: () => import('@/pages/activities/activity/judge/index/index.vue'), meta: { ...meta, title: "评审主页" } },
           { path: 'work', name: `${pre}work-index`, component: () => import('@/pages/activities/activity/work/index/index.vue'), meta: { ...meta, title: "作品主页" } },
         ])('activity-')

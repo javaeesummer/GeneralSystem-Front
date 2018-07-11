@@ -427,15 +427,19 @@ const setting = {
   ])('/core/setting/')
 }
 // 单个活动侧边菜单
+
+/*
+
+*/
 const activity = {
-  path: '/activity',
+  path: '/activities/activity/activityId=:activityId',
   title: '活动',
   icon: 'cog',
   children: (pre => [
     { path: `${pre}index`, title: '活动信息', icon: 'home' },
     { path: `${pre}judge`, title: '评委管理', icon: 'home' },
     { path: `${pre}work`, title: '作品管理', icon: 'info-circle' }
-  ])('/activities/activity')
+  ])('/activities/activity/activityId=:activityId/')
 
 }
 //活动管理（activities） 侧边菜单
@@ -468,7 +472,7 @@ export const sponsorMenu = [
   },
 
   activities,
-
+  demoElement
 
   // setting
 ]
@@ -478,9 +482,6 @@ export const adminMenu = [
     path: '/index',
     title: '首页',
     icon: 'home'
-  },
-  {
-
   },
   {
     path: '/demo',
@@ -509,6 +510,7 @@ export const adminMenu = [
       }
     ]
   },
+  demoElement
 ]
 export const userMenu = [
   {

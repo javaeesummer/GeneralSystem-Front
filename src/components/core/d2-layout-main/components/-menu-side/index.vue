@@ -1,16 +1,16 @@
 <template>
-  <div class="d2-layout-main-menu-side">
-    <el-menu :collapse="collapse" :unique-opened="true" :default-active="active" ref="menu" @select="handleMenuSelect">
-      <template v-for="(menu, menuIndex) in menus">
-        <d2-layout-main-menu-item v-if="menu.children === undefined" :menu="menu" :key="menuIndex" />
-        <d2-layout-main-menu-sub v-else :menu="menu" :key="menuIndex" />
-      </template>
-    </el-menu>
-    <div v-if="menus.length === 0 && !collapse" class="menu-empty">
-      <d2-icon name="hdd-o" />
-      <span>当前目录没有菜单</span>
+    <div class="d2-layout-main-menu-side">
+        <el-menu :collapse="collapse" :unique-opened="true" :default-active="active" ref="menu" @select="handleMenuSelect">
+            <template v-for="(menu, menuIndex) in menus">
+                <d2-layout-main-menu-item v-if="menu.children === undefined" :menu="menu" :key="menuIndex" />
+                <d2-layout-main-menu-sub v-else :menu="menu" :key="menuIndex" />
+            </template>
+        </el-menu>
+        <div v-if="menus.length === 0 && !collapse" class="menu-empty">
+            <d2-icon name="hdd-o" />
+            <span>当前目录没有菜单</span>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -21,6 +21,7 @@ import d2LayoutMainMenuItem from "../-menu-item/index.vue";
 import d2LayoutMainMenuSub from "../-menu-sub/index.vue";
 // 插件
 import BScroll from "better-scroll";
+import Vue from "vue";
 
 export default {
     name: "d2-layout-main-menu-side",
@@ -54,14 +55,25 @@ export default {
         },
         "$route.matched": {
             handler(val) {
-                console.log(val);
                 var path = val[0].path;
                 var _side = side.filter(menu => menu.path === path);
-                if(val.length>2){
-                  path=val[1].path;
-                  _side = side.filter(menu => menu.path === path);
+                if (val.length > 2) {
+                    path = val[1].path;
+                    let activityId = this.getParam(
+                        window.location.href,
+                        "activityId"
+                    );
+                    _side = side.filter(menu => menu.path === path);
+                    if (_side.length > 0) {
+                        _side[0] = this.generateDynamicPath(
+                            _side[0],
+                            ":activityId",
+                            activityId
+                        );
+                    }
+                    console.log("_side", _side);
                 }
-                console.log(path);
+
                 this.menus = _side.length > 0 ? _side[0].children : [];
                 this.active = val[val.length - 1].path;
                 this.$nextTick(() => {
@@ -96,6 +108,22 @@ export default {
             if (this.BS) {
                 this.BS.destroy();
             }
+        },
+        getParam(string, name) {
+            var start = string.indexOf("activityId");
+            var midle = string.indexOf("=", start);
+            var end = string.indexOf("/", midle);
+            return string.slice(midle + 1, end);
+        },
+        generateDynamicPath(routeObject, oldVal, newVal) {
+            routeObject.path = routeObject.path.replace(oldVal, newVal);
+
+            if (routeObject.children.length > 0) {
+                routeObject.children.forEach(element => {
+                    element.path = element.path.replace(oldVal, newVal);
+                });
+            }
+            return routeObject;
         }
     }
 };

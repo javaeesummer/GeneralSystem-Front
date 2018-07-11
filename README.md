@@ -6,6 +6,7 @@
 -   [项目预览](#项目预览)
 -   [注意事项](#注意事项)
 -   [参考文章](#参考文章)
+-   [关联资源](#关联资源)
 
 ## 推荐依赖
 <div id="推荐依赖"></div>
@@ -84,5 +85,16 @@
 -   [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
 -   [vue mixins](https://segmentfault.com/a/1190000009875015)
 
-## 开发时遇到的问题
--   常见开发问题
+## 关联资源
+<div id="关联资源"></div>
+
+-   [常见开发问题](https://github.com/javaeesummer/GeneralSystem-Front/blob/master/docs/dev/dev-FAQ.md)
+
+-   [任务清单](https://github.com/javaeesummer/GeneralSystem-Front/blob/master/docs/dev/dev-ToDoList.md)
+
+-   [提问](https://github.com/javaeesummer/GeneralSystem-Front/issues/1)
+
+
+
+
+
