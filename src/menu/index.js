@@ -432,14 +432,14 @@ const setting = {
 
 */
 const activity = {
-  path: '/activities/activity/activityId=:activityId',
+  path: '/activity/activityId=:activityId',
   title: '活动',
   icon: 'cog',
   children: (pre => [
     { path: `${pre}index`, title: '活动信息', icon: 'home' },
     { path: `${pre}judge`, title: '评委管理', icon: 'home' },
     { path: `${pre}work`, title: '作品管理', icon: 'info-circle' }
-  ])('/activities/activity/activityId=:activityId/')
+  ])('/activity/activityId=:activityId/')
 
 }
 //活动管理（activities） 侧边菜单

@@ -57,13 +57,25 @@ export default {
             handler(val) {
                 var path = val[0].path;
                 var _side = side.filter(menu => menu.path === path);
-                if (val.length > 2) {
-                    path = val[1].path;
+
+                // console.log(val);
+                //  console.log("path", path);
+                //  console.log("_side", _side);
+                if (val[0].name === "activity") {
                     let activityId = this.getParam(
                         window.location.href,
                         "activityId"
                     );
-                    _side = side.filter(menu => menu.path === path);
+                    path = val[0].path;
+                    let signIndex = path.indexOf("=");
+                    path=path.slice(0,signIndex);
+        
+                    console.log("path", path);
+                    _side = side.filter(menu => {
+                        // console.log(menu.path.indexOf(path));
+                        return menu.path.indexOf(path)===0;
+                    });
+                    console.log("_side", _side);
                     if (_side.length > 0) {
                         _side[0] = this.generateDynamicPath(
                             _side[0],
