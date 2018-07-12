@@ -472,7 +472,33 @@ export const sponsorMenu = [
   },
 
   activities,
-  demoElement
+  {
+    path: '/demo',
+    title: '功能',
+    icon: 'puzzle-piece',
+    children: [
+      demoElement,
+      demoComponents,
+      demoCharts,
+      demoPlugins,
+      demoPlayground,
+      {
+        title: '空菜单演示',
+        icon: 'folder-o',
+        children: [
+          {
+            title: '正在开发 1',
+            children: [
+              { title: '正在开发 1-1' },
+              { title: '正在开发 1-2' }
+            ]
+          },
+          { title: '正在开发 2' },
+          { title: '正在开发 3' }
+        ]
+      }
+    ]
+  },
 
   // setting
 ]
