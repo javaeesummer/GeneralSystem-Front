@@ -1,12 +1,14 @@
 <template>
-    <d2-container type="full">
-        <d2-demo-page-cover>
-            <router-link :to="{ name: 'activity', params: { activityId: 123 }}">
-                <el-button type="primary">主要按钮</el-button>
+  <d2-container type="full">
+          <template slot="header">这是活动</template>
+          <router-link :to="{ name: 'activity', params: { activityId: 123 }}">
+                <el-button type="primary">活动123</el-button>
             </router-link>
-            <p>这是活动管理</p>
-        </d2-demo-page-cover>
+            <router-link :to="{ name: 'activity', params: { activityId: 222 }}">
+                <el-button type="primary">活动222</el-button>
+            </router-link>
     </d2-container>
+  
 </template>
 
 <script>

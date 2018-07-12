@@ -1,9 +1,6 @@
 <template>
     <d2-container type="full">
-        <d2-demo-page-cover>
-            <p>这是活动</p>
-
-        </d2-demo-page-cover>
+          <template slot="header">活动信息</template>
     </d2-container>
 </template>
 

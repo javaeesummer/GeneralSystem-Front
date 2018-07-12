@@ -463,7 +463,7 @@ export const side = [
   activity,
   activities,
 ]
-
+// 主办方头部导航栏
 export const sponsorMenu = [
   {
     path: '/index',
@@ -476,8 +476,9 @@ export const sponsorMenu = [
 
   // setting
 ]
-
+// 主办方头部导航栏
 export const adminMenu = [
+
   {
     path: '/index',
     title: '首页',
@@ -512,6 +513,8 @@ export const adminMenu = [
   },
   demoElement
 ]
+
+// 游客？
 export const userMenu = [
   {
     path: '/index',

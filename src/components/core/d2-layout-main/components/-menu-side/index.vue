@@ -68,22 +68,27 @@ export default {
                     );
                     path = val[0].path;
                     let signIndex = path.indexOf("=");
-                    path=path.slice(0,signIndex);
-        
-                    console.log("path", path);
+                    path = path.slice(0, signIndex);
+                    signIndex = path.indexOf("/");
+                    path = path.slice(signIndex);
+                    // console.log("activityId", activityId);
+                    // console.log("path", path);
                     _side = side.filter(menu => {
                         // console.log(menu.path.indexOf(path));
-                        return menu.path.indexOf(path)===0;
+                        if (menu.path.indexOf(path) > -1) {
+                            console.log(menu.path, path);
+                        }
+                        return menu.path.indexOf(path) >= 0;
                     });
-                    console.log("_side", _side);
+                    console.log("_side1", _side);
                     if (_side.length > 0) {
                         _side[0] = this.generateDynamicPath(
                             _side[0],
-                            ":activityId",
+                            "activityId",
                             activityId
                         );
+                        console.log("_side2", _side);
                     }
-                    console.log("_side", _side);
                 }
 
                 this.menus = _side.length > 0 ? _side[0].children : [];
@@ -128,11 +133,35 @@ export default {
             return string.slice(midle + 1, end);
         },
         generateDynamicPath(routeObject, oldVal, newVal) {
+            let signIndex = routeObject.path.indexOf("/");
+            routeObject.path = routeObject.path.slice(signIndex);
+            console.log("signIndex", signIndex);
+            console.log(" routeObject.path ", routeObject.path);
+
+            var startIndex = routeObject.path.indexOf(oldVal) + oldVal.length;
+            var endIndex = routeObject.path.indexOf("/", startIndex);
+            oldVal = routeObject.path.slice(startIndex, endIndex + 1);
+
             routeObject.path = routeObject.path.replace(oldVal, newVal);
 
             if (routeObject.children.length > 0) {
                 routeObject.children.forEach(element => {
-                    element.path = element.path.replace(oldVal, newVal);
+                    // let signIndex = element.path.indexOf("/");
+                    // element.path = element.path.slice(signIndex);
+                    // var startIndex =
+                    //     element.path.indexOf(oldVal) + oldVal.length;
+                    // var endIndex = element.path.indexOf("/", startIndex);
+                    // oldVal = element.path.slice(startIndex, endIndex + 1);
+                    let title = element.title;
+                    if (title === "活动信息") {
+                        element.path = "index";
+                    } else if (title === "评委管理") {
+                        element.path = "judge";
+                    } else if (title === "作品管理") {
+                        element.path = "work";
+                    }
+
+                    // element.path = element.path.replace(oldVal, newVal);
                 });
             }
             return routeObject;

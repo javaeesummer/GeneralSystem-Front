@@ -1,8 +1,6 @@
 <template>
-    <d2-container type="full">
-        <d2-demo-page-cover>
-            <p>这是评审</p>
-        </d2-demo-page-cover>
+   <d2-container type="full">
+          <template slot="header">评审管理</template>
     </d2-container>
 
 </template>
