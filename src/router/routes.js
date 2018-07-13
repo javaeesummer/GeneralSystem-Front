@@ -21,6 +21,11 @@ const frameIn = [
     ]
   },
   {
+    path: '/test',
+    name:'test',
+    component: () => import('@/pages/test/test.vue'),
+  },
+  {
     path: '/activities',
     name: 'activities',
     meta,
