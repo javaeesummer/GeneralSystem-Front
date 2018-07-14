@@ -1,14 +1,14 @@
 <template>
-  <el-menu mode="horizontal" @select="handleMenuSelect">
-    <template v-for="(menu, menuIndex) in menus">
-      <d2-layout-main-menu-item v-if="menu.children === undefined" :menu="menu" :key="menuIndex" />
-      <d2-layout-main-menu-sub v-else :menu="menu" :key="menuIndex" />
-    </template>
-  </el-menu>
+    <el-menu mode="horizontal" @select="handleMenuSelect">
+        <template v-for="(menu, menuIndex) in menus">
+            <d2-layout-main-menu-item v-if="menu.children === undefined" :menu="menu" :key="menuIndex" />
+            <d2-layout-main-menu-sub v-else :menu="menu" :key="menuIndex" />
+        </template>
+    </el-menu>
 </template>
 
 <script>
-import {userMenu,adminMenu,sponsorMenu} from "@/menu/index.js";
+import { sponsorMenu } from "@/menu/index.js";
 import menuMixin from "../mixin/menu";
 // 组件
 import d2LayoutMainMenuItem from "../-menu-item/index.vue";
@@ -26,24 +26,12 @@ export default {
         "d2-layout-main-menu-item": d2LayoutMainMenuItem,
         "d2-layout-main-menu-sub": d2LayoutMainMenuSub
     },
-   
+
     data() {
         return {
-            menus: this.getMenu()
+            menus: sponsorMenu
         };
     },
-    methods: {
-        getMenu: function() {
-            var menu = sponsorMenu;
-            if (this.usertype === "主办方") {
-                menu =sponsorMenu;
-            } else if (this.usertype === "用户") {
-                menu = userMenu;
-            } else if (this.usertype === "游客") {
-                menu = userMenu;
-            }          
-            return menu;
-        }
-    }
+
 };
 </script>
