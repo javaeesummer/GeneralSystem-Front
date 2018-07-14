@@ -62,15 +62,8 @@
   
   </el-form-item >
 
-
-
-  
-  
- 
-  <el-form-item>
-           
-    <el-button  type="primary" @click="onSubmit">立即创建</el-button>
-        
+  <el-form-item>         
+    <el-button  type="primary" @click="onSubmit">立即创建</el-button>   
     <el-button>取消</el-button>
   </el-form-item>
 </el-form>
@@ -101,6 +94,7 @@ export default {
       this.$refs.form.validate(valid => {
         if (valid) {
           // 开始请求登录接口
+        
           this.$axios({
             method: "post",
             url: "/create",
@@ -121,6 +115,7 @@ export default {
                 title: "错误",
                 message: "这是一条错误的提示消息"
               });
+              
             });
         }
       });

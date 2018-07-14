@@ -15,7 +15,11 @@
   <el-form-item label="活动详情">
     <el-input v-model="formLabelAlign.type"></el-input>
   </el-form-item>
-    <el-button type="primary">查看活动作品</el-button>
+  
+  <router-link :to="{ name: 'activity-work-index'}">
+           <el-button type="primary">查看活动作品</el-button>
+        </router-link>
+
 </el-form>
     </d2-container> 
 </template>
@@ -44,6 +48,7 @@
             this.formLabelAlign.name = res.data.name,
             this.formLabelAlign.region=res.data.region,
             this.formLabelAlign.type=res.data.type
+            
         })
         .catch(err => {
              this.formLabelAlign.name='111',

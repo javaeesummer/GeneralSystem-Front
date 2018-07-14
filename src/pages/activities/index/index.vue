@@ -2,6 +2,7 @@
   <d2-container type="full">
           <template slot="header">这是所有的活动</template>
           <!-- <router-link :to="{ name: 'activity', params: { activityId: 123 }}"> -->
+
               <el-table
     :data="tableData"
     border
@@ -10,6 +11,7 @@
       type="index"
       width="50">
     </el-table-column>
+
     <el-table-column
       label="活动标识"
       align="center"
@@ -30,6 +32,23 @@
         </router-link>
       </template>
     </el-table-column>
+
+ <el-table-column label="查看" width="120" align="center">
+
+      <template slot-scope="scope">
+         <router-link :to="{ name: 'activity-work-grade'}">
+        <el-button
+          size="mini"
+          type="primary"
+          >评选结果</el-button>
+           </router-link>
+
+ 
+
+      </template>
+     
+    </el-table-column>
+
     <el-table-column label="操作" width="120" align="center">
       <template slot-scope="scope">
         <el-button
@@ -99,7 +118,7 @@ export default {
           info: '王小虎'
         }, {
           id: '4',
-          info: '王小虎'
+          info: '王'
         }];
         that.tableData=tableData1;
     console.log(that.tableData);

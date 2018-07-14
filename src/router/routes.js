@@ -40,6 +40,7 @@ const frameIn = [
       { path: 'index', name: `${pre}index`, component: () => import('@/pages/activities/activity/index/index.vue'), meta: { ...meta, title: "活动主页" } },
       { path: 'judge', name: `${pre}judge-index`, component: () => import('@/pages/activities/activity/judge/index/index.vue'), meta: { ...meta, title: "评审主页" } },
       { path: 'work', name: `${pre}work-index`, component: () => import('@/pages/activities/activity/work/index/index.vue'), meta: { ...meta, title: "作品主页" } },
+      { path: 'grade', name: `${pre}work-grade`, component: () => import('@/pages/activities/activity/work/index/grade.vue'), meta: { ...meta, title: "评选结果" } },
     ])('activity-')
   },
   {
