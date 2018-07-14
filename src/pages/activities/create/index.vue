@@ -83,30 +83,19 @@ export default {
     return {
       form: {
         name: "这里填写活动名称",
-
         desc: "本次活动主要目的...",
-
         dateA1: "2018-05-03",
-
         dateA2: "",
-
         dateB1: "2018-05-04",
-
         dateB2: "",
-
         dateC1: "2018-05-03",
-
         dateC2: "",
-
         resorce1: "",
-
         resorce2: "",
-
         people: ""
       }
     };
   },
-
   methods: {
     onSubmit() {
       this.$refs.form.validate(valid => {
@@ -114,9 +103,7 @@ export default {
           // 开始请求登录接口
           this.$axios({
             method: "post",
-
             url: "/create",
-
             data: this.form
           })
             .then(res => {
@@ -132,7 +119,6 @@ export default {
             .catch(err => {
               this.$notify.error({
                 title: "错误",
-
                 message: "这是一条错误的提示消息"
               });
             });
@@ -145,5 +131,3 @@ export default {
 
 <style lang="scss" scoped>
 </style>
-
-
