@@ -58,9 +58,6 @@ export default {
                 var path = val[0].path;
                 var _side = side.filter(menu => menu.path === path);
 
-                // console.log(val);
-                //  console.log("path", path);
-                //  console.log("_side", _side);
                 if (val[0].name === "activity") {
                     let activityId = this.getParam(
                         window.location.href,
@@ -71,23 +68,17 @@ export default {
                     path = path.slice(0, signIndex);
                     signIndex = path.indexOf("/");
                     path = path.slice(signIndex);
-                    // console.log("activityId", activityId);
-                    // console.log("path", path);
+
                     _side = side.filter(menu => {
-                        // console.log(menu.path.indexOf(path));
-                        if (menu.path.indexOf(path) > -1) {
-                            console.log(menu.path, path);
-                        }
                         return menu.path.indexOf(path) >= 0;
                     });
-                    console.log("_side1", _side);
+
                     if (_side.length > 0) {
                         _side[0] = this.generateDynamicPath(
                             _side[0],
                             "activityId",
                             activityId
                         );
-                        console.log("_side2", _side);
                     }
                 }
 
@@ -96,10 +87,14 @@ export default {
                 this.$nextTick(() => {
                     if (this.menus.length > 0) {
                         this.$refs.menu.activeIndex = this.active;
+                     
                     }
                 });
             },
             immediate: true
+        },
+        menus(){
+            console.log("menus",this.menus);
         }
     },
     mounted() {
@@ -135,9 +130,6 @@ export default {
         generateDynamicPath(routeObject, oldVal, newVal) {
             let signIndex = routeObject.path.indexOf("/");
             routeObject.path = routeObject.path.slice(signIndex);
-            console.log("signIndex", signIndex);
-            console.log(" routeObject.path ", routeObject.path);
-
             var startIndex = routeObject.path.indexOf(oldVal) + oldVal.length;
             var endIndex = routeObject.path.indexOf("/", startIndex);
             oldVal = routeObject.path.slice(startIndex, endIndex + 1);
@@ -146,12 +138,6 @@ export default {
 
             if (routeObject.children.length > 0) {
                 routeObject.children.forEach(element => {
-                    // let signIndex = element.path.indexOf("/");
-                    // element.path = element.path.slice(signIndex);
-                    // var startIndex =
-                    //     element.path.indexOf(oldVal) + oldVal.length;
-                    // var endIndex = element.path.indexOf("/", startIndex);
-                    // oldVal = element.path.slice(startIndex, endIndex + 1);
                     let title = element.title;
                     if (title === "活动信息") {
                         element.path = "index";
@@ -160,8 +146,6 @@ export default {
                     } else if (title === "作品管理") {
                         element.path = "work";
                     }
-
-                    // element.path = element.path.replace(oldVal, newVal);
                 });
             }
             return routeObject;

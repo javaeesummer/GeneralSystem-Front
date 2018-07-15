@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
       <d2-container type="full">
           <template slot="header">作品管理</template>
 
@@ -49,6 +50,12 @@
   </el-table>
   </el-main>
 </el-container>      
+=======
+    <d2-container type="full">
+        <template slot="header">作品管理</template>
+
+        <button @click="toOneWork"> 1</button>
+>>>>>>> aed0518357122c8fa197aa05b23e6335c131e380
     </d2-container>
 </template>
 
@@ -68,6 +75,7 @@
 </style>
 
 <script>
+<<<<<<< HEAD
   export default {
     data() {
       return {
@@ -133,4 +141,20 @@
     }
   }
 </script>
+=======
+export default {
+    methods: {
+        toOneWork() {
+            this.$router.push({
+                name: "activity-onework",
+                params: { workId: 123 }
+            });
+        }
+    }
+};
+</script>
+
+<style lang="scss" scoped>
+</style>
+>>>>>>> aed0518357122c8fa197aa05b23e6335c131e380
 
