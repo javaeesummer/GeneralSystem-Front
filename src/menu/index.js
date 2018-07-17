@@ -26,9 +26,10 @@ const activity = {
   title: '活动',
   icon: 'cog',
   children: (pre => [
-    { path: `${pre}index`, title: '活动信息', icon: 'home' },
-    { path: `${pre}judge`, title: '评委管理', icon: 'home' },
-    { path: `${pre}work`, title: '作品管理', icon: 'info-circle' }
+    { path: `${pre}index`, title: '活动信息', icon: 'list-ul' },
+    { path: `${pre}judge`, title: '评委管理', icon: 'wrench' },
+    { path: `${pre}work`, title: '作品管理', icon: 'wrench' },
+    { path: `${pre}accept`, title: '参赛者管理', icon: 'wrench' }
   ])('/activity/activityId=:activityId/')
 
 }
@@ -38,8 +39,8 @@ const activities = {
   title: '活动管理',
   icon: 'cog',
   children: (pre => [
-    { path: `${pre}index`, title: '活动管理', icon: 'home' },
-    { path: `${pre}create`, title: '活动创建', icon: 'home' },
+    { path: `${pre}index`, title: '活动管理', icon: 'wrench' },
+    { path: `${pre}create`, title: '活动创建', icon: 'plus-circle' },
   ])('/activities/')
 }
 // 菜单 侧边栏

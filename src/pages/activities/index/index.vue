@@ -2,16 +2,11 @@
   <d2-container type="full">
           <template slot="header">这是所有的活动</template>
           <!-- <router-link :to="{ name: 'activity', params: { activityId: 123 }}"> -->
-
               <el-table
     :data="tableData"
     border
     style="width: 100%">
-    <el-table-column
-      type="index"
-      width="50">
-    </el-table-column>
-
+ 
     <el-table-column
       label="活动标识"
       align="center"
@@ -33,20 +28,15 @@
       </template>
     </el-table-column>
 
- <el-table-column label="查看" width="120" align="center">
-
+   <el-table-column label="查看" width="120" align="center">
       <template slot-scope="scope">
-         <router-link :to="{ name: 'activity-work-grade'}">
+<router-link :to="{ name: 'activity-work-grade'}">
         <el-button
           size="mini"
           type="primary"
-          >评选结果</el-button>
-           </router-link>
-
- 
+          >评选结果</el-button></router-link>
 
       </template>
-     
     </el-table-column>
 
     <el-table-column label="操作" width="120" align="center">
@@ -57,6 +47,7 @@
           @click="handleDelete(scope.$index, scope.row)" v-on:click="deleteActivitys()">删除活动</el-button>
       </template>
     </el-table-column>
+
   </el-table>
     </d2-container> 
 </template>
@@ -109,16 +100,16 @@ export default {
   .catch(function (error) {
       var  tableData1= [{
           id: '1',
-          info: '王小虎'
+          info: '活动一'
         }, {
           id: '2',
-          info: '王小虎'
+          info: '活动二'
         }, {
           id: '3',
-          info: '王小虎'
+          info: '活动三'
         }, {
           id: '4',
-          info: '王'
+          info: '活动四'
         }];
         that.tableData=tableData1;
     console.log(that.tableData);
@@ -141,5 +132,3 @@ export default {
 @media (min-width: 1921px) {
 }
 </style>
-
-

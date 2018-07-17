@@ -23,6 +23,7 @@
       text='center'
       label="获奖作品名称">
     </el-table-column>
+    
   </el-table>
 </el-main>
                    </el-container>
@@ -35,16 +36,16 @@ export default {
     return {
       tableData: [
         {
-          name: "1"
+          name: ""
         },
         {
-          name: "1"
+          name: ""
         },
         {
-          name: "1"
+          name: ""
         },
         {
-          name: "1"
+          name: ""
         }
       ]
     };
@@ -52,9 +53,6 @@ export default {
 
   mounted() {
     this.onGet();
-  },
-  created: function() {
-    this.getActivitys();
   },
 
   methods: {
@@ -68,10 +66,25 @@ export default {
           console.log(res);
         })
         .catch(err => {
-          //   this.$notify.error({
-          //         title: "错误",
-          //         message: "这是一条错误的提示消息"
-          //       });
+            this.$notify.error({
+                  title: "错误",
+                  message: "这是一条错误的提示消息"
+                });
+
+        this.tableData= [
+        {
+          name: "1"
+        },
+        {
+          name: "1"
+        },
+        {
+          name: "1"
+        },
+        {
+          name: "1"
+        }
+      ]
         });
     }
   }

@@ -40,9 +40,14 @@ const frameIn = [
       { path: 'index', name: `${pre}index`, component: () => import('@/pages/activities/activity/index/index.vue'), meta: { ...meta, title: "活动主页" } },
       { path: 'judge', name: `${pre}judge-index`, component: () => import('@/pages/activities/activity/judge/index/index.vue'), meta: { ...meta, title: "评审主页" } },
       { path: 'work', name: `${pre}work-index`, component: () => import('@/pages/activities/activity/work/index/index.vue'), meta: { ...meta, title: "作品主页" } },
-      { path: 'grade', name: `${pre}work-grade`, component: () => import('@/pages/activities/activity/work/index/grade.vue'), meta: { ...meta, title: "评选结果" } },
+      { path: 'accept', name: `${pre}accept-index`, component: () => import('@/pages/activities/activity/accept/index/index.vue'), meta: { ...meta, title: "参赛者主页" } },
+
+      { path: 'grade', name: `${pre}work-      grade`, component: () => import('@/pages/activities/activity/work/index/grade.vue'), meta: { ...meta, title: "评选结果" } },
       { path: 'judgeId=:judgeId', name: `${pre}onejudge`, component: () => import('@/pages/activities/activity/judge/one-judge/index.vue'), meta: { ...meta, title: "单个评委" } },
       { path: 'workId=:workId', name: `${pre}onework`, component: () => import('@/pages/activities/activity/work/one-work/index.vue'), meta: { ...meta, title: "单个作品" } },
+      { path: 'group', name: `${pre}judge-group`, component: () => import('@/pages/activities/activity/judge/index/group.vue'), meta: { ...meta, title: "添加分组" } },
+      { path: 'juger', name: `${pre}judge-juger`, component: () => import('@/pages/activities/activity/judge/index/juger.vue'), meta: { ...meta, title: "添加评委" } },
+      { path: 'juger', name: `${pre}judge-modjuger`, component: () => import('@/pages/activities/activity/judge/index/modjuger.vue'), meta: { ...meta, title: "编辑评委" } },
     ])('activity-')
   },
   {

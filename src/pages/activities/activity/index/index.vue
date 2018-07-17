@@ -16,9 +16,9 @@
     <el-input v-model="formLabelAlign.type"></el-input>
   </el-form-item>
   
-  <router-link :to="{ name: 'activity-work-index'}">
+  <!-- <router-link :to="{ name: 'activity-work-index'}">
            <el-button type="primary">查看活动作品</el-button>
-        </router-link>
+   </router-link> -->
 
 </el-form>
     </d2-container> 

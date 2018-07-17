@@ -1,41 +1,51 @@
 <template>
 
   <d2-container type="full">
-          <template slot="header">评委主页</template>
-          <!-- <router-link :to="{ name: 'activity', params: { activityId: 123 }}"> -->
-
- 
-  <router-link :to="{ name: 'activity-judge-group'}">
-           <el-button type="primary" >添加分组</el-button>
-        </router-link>
-    
+          <template slot="header">参赛者主页
 
 
- <router-link :to="{ name: 'activity-judge-juger'}">
-           <el-button type="primary" >添加评委</el-button>
-        </router-link>
-
-
-              <el-table
+              <div class="search">
+             
+                  <el-col :span="6">
+                <el-input type="text" class="searchBox" v-model="input" placeholder="请输入搜索内容"></el-input>
+                  </el-col>
+                 <el-button type="primary" @click="onSearch()">搜索</el-button>
+            </div>
+          </template>
+    <el-table
     :data="tableData"
     border
     style="width: 100%">
-   
 
-    <el-table-column
-      label="序号"
-      type="index"
-      align="center"
-      width="120"> 
-    </el-table-column>
-
-    <el-table-column
-      label="评委用户名"
+        <el-table-column
+      label="比赛编号"
       header-align="center"
       >
       <template slot-scope="scope">
        
-        <span style="margin-left: 10px">{{ scope.row.username }}</span>
+        <span style="margin-left: 10px">{{ scope.row.attendorId }}</span>
+  
+      </template>
+    </el-table-column>
+
+    <el-table-column
+      label="活动ID"
+      header-align="center"
+      >
+      <template slot-scope="scope">
+       
+        <span style="margin-left: 10px">{{ scope.row.activityId}}</span>
+  
+      </template>
+    </el-table-column>
+
+        <el-table-column
+      label="联系方式"
+      header-align="center"
+      >
+      <template slot-scope="scope">
+       
+        <span style="margin-left: 10px">{{ scope.row.phoneNum }}</span>
   
       </template>
     </el-table-column>
@@ -43,34 +53,55 @@
 
 
      <el-table-column
-      label="评委密码"
+      label="票数"
       header-align="center"
       >
       <template slot-scope="scope">
   
-        <span style="margin-left: 10px">{{ scope.row.pwd }}</span>
+        <span style="margin-left: 10px">{{ scope.row.voteNum }}</span>
 
       </template>
     </el-table-column>
     
+     <el-table-column
+      label="最终结果"
+      header-align="center"
+      >
+      <template slot-scope="scope">
+
+        <span style="margin-left: 10px">{{ scope.row.endResult }}</span>
+      
+      </template>
+    </el-table-column>
+      
+     <el-table-column
+      label="状态"
+      header-align="center"
+      >
+      <template slot-scope="scope">
+
+        <span style="margin-left: 10px">{{ scope.row.status }}</span>
+      
+      </template>
+    </el-table-column>
+
      <el-table-column
       label="组号"
       header-align="center"
       >
       <template slot-scope="scope">
 
-        <span style="margin-left: 10px">{{ scope.row.groupid }}</span>
+        <span style="margin-left: 10px">{{ scope.row.groupId }}</span>
       
       </template>
     </el-table-column>
-
-     <el-table-column
-      label="备注"
+         <el-table-column
+      label="用户Id"
       header-align="center"
       >
       <template slot-scope="scope">
 
-        <span style="margin-left: 10px">{{ scope.row.other }}</span>
+        <span style="margin-left: 10px">{{ scope.row.userID }}</span>
       
       </template>
     </el-table-column>
@@ -89,18 +120,19 @@
      
     </el-table-column> -->
 
-    <el-table-column label="操作" width="120" align="center">
+    <!-- <el-table-column label="操作" width="120" align="center">
       <template slot-scope="scope">
         <el-button
           size="mini"
           type="danger"
           @click="handleDelete(scope.$index, scope.row)" v-on:click="deleteActivitys()">删除</el-button>
       </template>
-    </el-table-column>
+    </el-table-column> -->
   </el-table>
 
 
     </d2-container> 
+    
 </template>
 <script>
 export default {
@@ -142,6 +174,28 @@ export default {
         });
   });
     },
+
+    onSearch(){
+          this.$axios({
+        methods: "get",
+        url: "/xx"
+      })
+
+        .then(res => {
+          console.log(res);
+   
+        })
+        .catch(err => {
+          
+            this.$notify.warning({
+                  title: "提醒",
+                  message: "没有搜索项"
+                });
+
+      
+        });
+    },
+    
       getActivitys(){
         var that=this;
         this.$axios.get('/user?ID=12345')

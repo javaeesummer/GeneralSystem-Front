@@ -145,6 +145,8 @@ export default {
                         element.path = "judge";
                     } else if (title === "作品管理") {
                         element.path = "work";
+                    }else if (title === "参赛者管理") {
+                        element.path = "accept";
                     }
                 });
             }

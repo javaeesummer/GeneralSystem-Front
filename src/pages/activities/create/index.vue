@@ -105,6 +105,8 @@ export default {
                 title: "成功",
                 message: "这是一条成功的提示消息",
                 type: "success"
+
+              
               });
               this.$router.push({
                 name: "activities-index"

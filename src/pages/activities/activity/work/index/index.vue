@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
       <d2-container type="full">
           <template slot="header">作品管理</template>
 
@@ -50,12 +49,6 @@
   </el-table>
   </el-main>
 </el-container>      
-=======
-    <d2-container type="full">
-        <template slot="header">作品管理</template>
-
-        <button @click="toOneWork"> 1</button>
->>>>>>> aed0518357122c8fa197aa05b23e6335c131e380
     </d2-container>
 </template>
 
@@ -75,13 +68,12 @@
 </style>
 
 <script>
-<<<<<<< HEAD
   export default {
     data() {
       return {
         tableData5: [{
           id: '12987122',
-          name: '好滋好味鸡蛋仔',
+          name: '作品一',
           category: '江浙小吃、小吃零食',
           desc: '荷兰优质淡奶，奶香浓而不腻',
           address: '上海市普陀区真北路',
@@ -89,7 +81,7 @@
           shopId: '12345'
         }, {
           id: '12987123',
-          name: '好滋好味鸡蛋仔',
+          name: '作品二',
           category: '江浙小吃、小吃零食',
           desc: '荷兰优质淡奶，奶香浓而不腻',
           address: '上海市普陀区真北路',
@@ -97,7 +89,7 @@
           shopId: '10333'
         }, {
           id: '12987125',
-          name: '好滋好味鸡蛋仔',
+          name: '作品三',
           category: '江浙小吃、小吃零食',
           desc: '荷兰优质淡奶，奶香浓而不腻',
           address: '上海市普陀区真北路',
@@ -105,7 +97,7 @@
           shopId: '10333'
         }, {
           id: '12987126',
-          name: '好滋好味鸡蛋仔',
+          name: '作品四',
           category: '江浙小吃、小吃零食',
           desc: '荷兰优质淡奶，奶香浓而不腻',
           address: '上海市普陀区真北路',
@@ -131,30 +123,14 @@
         })
   
         .catch(err => {
-             this.formLabelAlign.name='111',
-
-            this.formLabelAlign.region='2',
-            this.formLabelAlign.type='3'
+          this.$notify.error({
+                  title: "错误",
+                  message: "这是一条错误的提示消息"
+                });
             });
         
       }
     }
   }
 </script>
-=======
-export default {
-    methods: {
-        toOneWork() {
-            this.$router.push({
-                name: "activity-onework",
-                params: { workId: 123 }
-            });
-        }
-    }
-};
-</script>
-
-<style lang="scss" scoped>
-</style>
->>>>>>> aed0518357122c8fa197aa05b23e6335c131e380
 
